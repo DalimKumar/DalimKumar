@@ -4,22 +4,30 @@ import { Range, getTrackBackground } from "react-range";
 import styles from "./styles.module.css";
 
 const MyRange = () => {
-  const [value, setState] = useState([1]);
+  const [value, setState] = useState([1500]);
+  const [dataValue, setDataValue] = useState(0);
   const data = [
     { title: "30 DR", price: 160, url: "sampleone.com" },
     { title: "60 DR", price: 260, url: "sampletwo.com" },
     { title: "90 DR", price: 340, url: "samplethree.com" },
   ];
-  console.log(value[0]);
+
   return (
     <div className={styles.myRange}>
-      <h3 className={styles.title}>{data[value - 1].title}</h3>
+      <h3 className={styles.title}>{data[dataValue].title}</h3>
       <Range
-        step={1}
-        min={1}
-        max={3}
+        step={20}
+        min={1500}
+        max={4500}
         values={value}
-        onChange={(values) => setState(values)}
+        onChange={(values) => {
+          if (values == 1500 || values == 3000 || values == 4500) {
+            const number = values / 1500;
+            setDataValue(number - 1);
+            console.log(dataValue);
+          }
+          setState(values);
+        }}
         renderTrack={({ props, children }) => (
           <div
             {...props}
@@ -32,8 +40,8 @@ const MyRange = () => {
               background: getTrackBackground({
                 values: value,
                 colors: ["#EB3EE4", "#FCFCFC"],
-                min: 1,
-                max: 3,
+                min: 1500,
+                max: 4500,
               }),
             }}
           >
@@ -61,14 +69,14 @@ const MyRange = () => {
         <span>2</span>
         <span>3</span>
       </div> */}
-      <h4 className={styles.price}>${data[value - 1].price}</h4>
+      <h4 className={styles.price}>${data[dataValue].price}</h4>
       <a
         className={styles.myButton}
-        href={data[value - 1].url}
+        href={data[dataValue].url}
         target="_blank"
         rel="noreferrer"
       >
-        {data[value - 1].url}
+        {data[dataValue].url}
       </a>
     </div>
   );
