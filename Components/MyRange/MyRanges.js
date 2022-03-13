@@ -1,7 +1,6 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { Range, getTrackBackground } from "react-range";
 
-import { useState } from "react/cjs/react.development";
 import styles from "./styles.module.css";
 
 const MyRange = () => {
