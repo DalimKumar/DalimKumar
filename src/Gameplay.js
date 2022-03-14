@@ -30,7 +30,7 @@ function Gameplay() {
           <div className="row justify-content-center">
             {GamePlayArray.map((el, i) => (
               <div
-                className="col-xl-3 col-sm-6 col-md-6   d-flex justify-content-center align-items-center"
+                className="col-xl-3 col-lg-4 col-sm-6 col-md-6   d-flex justify-content-center align-items-center"
                 key={i}
               >
                 <div className="single-play-1">

@@ -3,6 +3,9 @@ import React, { useState } from "react";
 
 const Stake = () => {
   const [value, setValue] = useState(0);
+  const [stake, setStale] = useState(2);
+  const [perHour, setPerHour] = useState(1456.5);
+  const [perDay, setPerDay] = useState(23000);
   const stakeArray = [
     { name: "Stake", stakeNumber: 1500 },
     { name: "Stake", stakeNumber: 1500 },
@@ -84,43 +87,46 @@ const Stake = () => {
                         boxSizing: "border-box",
                         boxShadow: "0px 0px 25px #7A1BB4",
                         borderRadius: "25px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
                       }}
                     >
-                      02
+                      {stake}
                     </div>
                   </div>
-                  <div className=" col-7">
+                  <div className=" col-7 mt-2">
                     <lable className="stack-play-lable">REV PER HOUR:</lable>
                   </div>
-                  <div className=" col-5">
+                  <div className=" col-5 mt-2">
                     <div className="stack-play-input">
-                      1456.5
+                      {perHour}
                       <span className="stack-span">
-                        <img src="assets/images/dimond.png" alt="#" />
+                        <img src="assets/images/diamond.png" alt="#" />
                       </span>
                     </div>
                   </div>
 
-                  <div className=" col-7">
+                  <div className=" col-7 mt-2">
                     <lable className="stack-play-lable">REV PER DAY :</lable>
                   </div>
-                  <div className=" col-5">
+                  <div className=" col-5 mt-2">
                     <div className="stack-play-input">
-                      115000
+                      {perDay}
                       <span className="stack-span">
-                        <img src="assets/images/dimond.png" alt="#" />
+                        <img src="assets/images/diamond.png" alt="#" />
                       </span>
                     </div>
                   </div>
 
-                  <div className="col-md-7">
+                  <div className="col-7 mt-2">
                     <lable className="stack-play-lable"></lable>
                   </div>
-                  <div className="col-md-5">
+                  <div className="col-5 mt-2 ">
                     <div className="stack-play-input">
                       X2.0
                       <span className="stack-span">
-                        <img src="assets/images/dimond.png" alt="#" />
+                        <img src="assets/images/diamond.png" alt="#" />
                       </span>
                       <br />
                       (MULTIPLY)
@@ -134,10 +140,10 @@ const Stake = () => {
                     <lable className="stack-play-lable">TOTAL PER DAY :</lable>
                   </div>
                   <div className=" col-4">
-                    <div className="stack-play-input">
-                      23000
+                    <div className="stack-play-input d-flex ">
+                      {(perHour + perDay).toFixed(2)}
                       <span className="stack-span">
-                        <img src="assets/images/dimond.png" alt="#" />
+                        <img src="assets/images/diamond.png" alt="#" />
                       </span>
                     </div>
                   </div>
