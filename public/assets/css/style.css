@@ -10401,6 +10401,7 @@ p {
   z-index: 1000000000000;
   top: 30px;
   right: 30px;
+  opacity: 1;
 }
 .close2 {
   top: 50px;
