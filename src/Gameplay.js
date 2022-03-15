@@ -1,10 +1,10 @@
 import React from "react";
 function Gameplay() {
   const GamePlayArray = [
-    "assets/images/Vector1.png",
-    "assets/images/Vector2.png",
-    "assets/images/Vector3.png",
-    "assets/images/Vector4.png",
+    { gif: "./assets/images/Starships.gif", img: "assets/images/Vector1.png" },
+    { gif: "./assets/images/gun.gif", img: "assets/images/Vector2.png" },
+    { gif: "./assets/images/Starships.gif", img: "assets/images/Vector3.png" },
+    { gif: "./assets/images/gun.gif", img: "assets/images/Vector4.png" },
   ];
   return (
     <>
@@ -34,13 +34,8 @@ function Gameplay() {
                 key={i}
               >
                 <div className="single-play-1" style={{ position: "relative" }}>
-                  <video
-                    src="./assets/video/gun.mp4"
-                    width="100%"
-                    autoPlay={true}
-                    className="video"
-                  ></video>
-                  <img src={el} alt="" className="frame" />
+                  <img src={el.gif} alt="" className="img-gif" />
+                  <img src={el.img} alt="" className="frame" />
                 </div>
               </div>
             ))}
