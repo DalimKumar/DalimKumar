@@ -6,7 +6,7 @@ const Wrapper = styled.div`
 
   .title {
     font-family: "Avenir";
-    font-style: normal;
+
     font-weight: 300;
     font-size: 80px;
     line-height: 120%;
@@ -35,7 +35,7 @@ const Wrapper = styled.div`
     font-size: 35px;
     line-height: 130%;
 
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 1);
   }
   @media only screen and (max-width: 1600px) {
     .icon {

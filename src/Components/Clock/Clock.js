@@ -3,8 +3,8 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   font-family: "Blinker";
   .clock {
-    width: 300px;
-    height: 300px;
+    width: 450px;
+    height: 450px;
     border-radius: 50%;
 
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
@@ -33,10 +33,10 @@ const Wrapper = styled.div`
   .hour_hand {
     position: absolute;
     width: 6px;
-    height: 90px;
+    height: 140px;
     background: #ffffff;
-    top: 20%;
-    left: 49%;
+    top: 19%;
+    left: 49.4%;
     transform-origin: bottom;
   }
 
@@ -124,6 +124,79 @@ const Wrapper = styled.div`
   .ten {
     top: 25%;
     left: 10%;
+  }
+  @media only screen and (max-width: 1650px) {
+    .clock {
+      width: 400px;
+      height: 400px;
+    }
+
+    .hour_hand {
+      height: 110px;
+
+      top: 22.6%;
+      left: 49.4%;
+    }
+  }
+  @media only screen and (max-width: 1399px) {
+    .clock {
+      width: 350px;
+      height: 350px;
+    }
+    .hour_hand {
+      height: 100px;
+
+      top: 21.6%;
+      left: 49%;
+    }
+  }
+  @media only screen and (max-width: 1199px) {
+    .clock {
+      width: 300px;
+      height: 300px;
+    }
+    .hour_hand {
+      height: 90px;
+
+      top: 20%;
+      left: 49%;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .clock {
+      width: 400px;
+      height: 400px;
+    }
+    .hour_hand {
+      height: 110px;
+
+      top: 22.6%;
+      left: 49.4%;
+    }
+  }
+  @media only screen and (max-width: 575px) {
+    .clock {
+      width: 350px;
+      height: 350px;
+    }
+    .hour_hand {
+      height: 100px;
+
+      top: 21.6%;
+      left: 49%;
+    }
+  }
+  @media only screen and (max-width: 420px) {
+    .clock {
+      width: 300px;
+      height: 300px;
+    }
+    .hour_hand {
+      height: 90px;
+
+      top: 20%;
+      left: 49%;
+    }
   }
 `;
 

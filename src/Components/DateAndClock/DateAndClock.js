@@ -41,6 +41,12 @@ const Wrapper = styled.div`
   .time {
     cursor: pointer;
   }
+  @media only screen and (max-width: 991px) {
+    .main {
+      border-radius: 40px;
+      padding: 25px 20px;
+    }
+  }
 `;
 const DateAndClock = () => {
   const [time, setTime] = useState(0);
@@ -49,41 +55,80 @@ const DateAndClock = () => {
 
   const dayArray = ["Day1", "Day2"];
   const dateArray = [
-    {
-      text: "lorem ipsum",
-      timeText: "12:00 am",
-      time: "March 19, 1975 24:00:00",
-    },
-    {
-      text: "lorem ipsum",
-      timeText: "11:00 pm",
-      time: "March 19, 1975 11:00:00",
-    },
-    {
-      text: "lorem ipsum",
-      timeText: "09:00 am",
-      time: "March 19, 1975 21:00:00",
-    },
-    {
-      text: "lorem ipsum",
-      timeText: "12:00 am",
-      time: "March 19, 1975 24:00:00",
-    },
-    {
-      text: "lorem ipsum",
-      timeText: "11:00 pm",
-      time: "March 19, 1975 11:00:00",
-    },
-    {
-      text: "lorem ipsum",
-      timeText: "09:00 am",
-      time: "March 19, 1975 21:00:00",
-    },
-    {
-      text: "lorem ipsum",
-      timeText: "12:00 am",
-      time: "March 19, 1975 24:00:00",
-    },
+    [
+      {
+        text: "lorem ipsum",
+        timeText: "12:00 am",
+        time: "March 19, 1975 24:00:00",
+      },
+      {
+        text: "lorem ipsum",
+        timeText: "11:00 pm",
+        time: "March 19, 1975 11:00:00",
+      },
+      {
+        text: "lorem ipsum",
+        timeText: "09:00 am",
+        time: "March 19, 1975 21:00:00",
+      },
+      {
+        text: "lorem ipsum",
+        timeText: "12:00 am",
+        time: "March 19, 1975 24:00:00",
+      },
+      {
+        text: "lorem ipsum",
+        timeText: "11:00 pm",
+        time: "March 19, 1975 11:00:00",
+      },
+      {
+        text: "lorem ipsum",
+        timeText: "09:00 am",
+        time: "March 19, 1975 21:00:00",
+      },
+      {
+        text: "lorem ipsum",
+        timeText: "12:00 am",
+        time: "March 19, 1975 24:00:00",
+      },
+    ],
+    [
+      {
+        text: "lorem ipsum",
+        timeText: "11:00 am",
+        time: "March 19, 1975 24:00:00",
+      },
+      {
+        text: "lorem ipsum",
+        timeText: "11:00 pm",
+        time: "March 19, 1975 11:00:00",
+      },
+      {
+        text: "lorem ipsum",
+        timeText: "09:00 am",
+        time: "March 19, 1975 21:00:00",
+      },
+      {
+        text: "lorem ipsum",
+        timeText: "12:00 am",
+        time: "March 19, 1975 24:00:00",
+      },
+      {
+        text: "lorem ipsum",
+        timeText: "11:00 pm",
+        time: "March 19, 1975 11:00:00",
+      },
+      {
+        text: "lorem ipsum",
+        timeText: "09:00 am",
+        time: "March 19, 1975 21:00:00",
+      },
+      {
+        text: "lorem ipsum",
+        timeText: "12:00 am",
+        time: "March 19, 1975 24:00:00",
+      },
+    ],
   ];
 
   return (
@@ -113,7 +158,7 @@ const DateAndClock = () => {
                   </p>
                 ))}{" "}
               </div>
-              {dateArray.map((el, i) => (
+              {dateArray[daySelect].map((el, i) => (
                 <div
                   className="d-flex justify-content-between w-100 align-items-center text-container"
                   key={i}
@@ -149,7 +194,7 @@ const DateAndClock = () => {
             md={6}
             className="d-flex justify-content-center align-items-center mt-5 my-md-0"
           >
-            <Clock time={dateArray[time].time} />
+            <Clock time={dateArray[daySelect][time].time} />
           </Col>
         </Row>
       </Col>

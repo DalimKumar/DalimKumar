@@ -7,6 +7,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import styled from "styled-components";
 const Wrapper = styled.div`
   position: fixed;
+  z-index: 500;
   width: 100%;
   a {
     text-decoration: none;
@@ -33,10 +34,10 @@ const Wrapper = styled.div`
     font-family: "Blinker";
     font-style: normal;
     font-weight: 400;
-    font-size: 40px;
+    font-size: 45px;
     line-height: 120%;
     color: #ffffff;
-    text-shadow: 0px 4px 40px #ffffff;
+    text-shadow: 0px 8px 40px #ffffff;
     transition: 0.2s;
   }
   .sidebar {
@@ -83,11 +84,14 @@ const Wrapper = styled.div`
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const [sidebar, setSidebar] = useState(false);
+  const [value, setValue] = useState(2);
   const changeBackground = () => {
     if (window.scrollY >= 80) {
       setNavbar(true);
+      setValue(null);
     } else {
       setNavbar(false);
+      setValue(2);
     }
   };
 
@@ -120,7 +124,7 @@ const Navbar = () => {
                   duration={500}
                   to={el.to}
                   activeClass="active"
-                  className="link"
+                  className={value === i ? "link active" : "link"}
                 >
                   {el.name}
                 </Link>

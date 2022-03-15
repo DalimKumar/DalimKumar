@@ -52,6 +52,7 @@ const Wrapper = styled.div`
     color: #fff;
     margin-top: 5px;
     margin-left: 10px;
+    cursor: pointer;
   }
 
   @media only screen and (max-width: 1399px) {
@@ -117,19 +118,15 @@ const Faq = () => {
           {dashboardArray.map((el, i) => (
             <div key={i} className="faqContainer">
               <div className="d-flex justify-content-between">
-                <div
-                  className="question d-flex justify-content-between"
-                  onClick={() => setValue(i)}
-                >
+                <div className="question d-flex justify-content-between">
                   {el.question}
                   <div className="d-flex">
-                    {value !== i && (
+                    {value !== i ? (
                       <BiPlus className="icon" onClick={() => setValue(i)} />
-                    )}
-                    {value === i && (
+                    ) : (
                       <BiMinus
                         className="icon"
-                        onClick={() => setValue(null)}
+                        onClick={() => setValue(false)}
                       />
                     )}
                   </div>
