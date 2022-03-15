@@ -168,14 +168,14 @@ const Stake = ({ myModal, setMymodal }) => {
                     </div>
                   </div>
                 </div>
-                <AiOutlineClose
-                  color="#fff"
-                  className="close close2"
-                  onClick={() => setMymodal(false)}
-                />
               </div>
             </div>
           </section>
+          <AiOutlineClose
+            color="#fff"
+            className="close close2"
+            onClick={() => setMymodal(false)}
+          />
         </div>
       )}
     </>
