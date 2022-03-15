@@ -27,8 +27,8 @@ function Header() {
 
   return (
     <>
-      {/* <StakModal stake={stake} setStake={setStake} />
-      <BankModal bank={bank} setBank={setBank} /> */}
+      {/* <StakModal stake={stake} setStake={setStake} />*/}
+      <BankModal bank={bank} setBank={setBank} />
       <Stake myModal={stackModal} setMymodal={setStackModal} />
       <TheTLDRHowToPlay myModal={howToPlay} setMymodal={setHowToPlay} />
 
@@ -105,13 +105,13 @@ function Header() {
                       <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
                           <a
-                            className="nav-link"
                             onClick={() => {
                               setHowToPlay(true);
                               scrollToTop();
                             }}
+                            className="nav-link"
                           >
-                            How to play
+                            How To Play
                           </a>
                         </li>
                         <li className="nav-item">

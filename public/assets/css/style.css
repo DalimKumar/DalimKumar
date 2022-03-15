@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-family: "popines", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
   margin: 0;
   color: #a1aed4;
@@ -52,7 +52,7 @@ h4,
 h5,
 h6 {
   color: #fff;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: ""Josefin Sans", sans-serif;, sans-serif;
 }
 
 p {
@@ -2494,7 +2494,7 @@ p {
 .game-play-section {
   padding: 40px 0px 40px;
   background-image: url("../images/bg-01 1.png");
-  background-size: 80%;
+  background-size: cover;
 
   position: relative;
   background-repeat: no-repeat;
@@ -2542,6 +2542,7 @@ p {
   background-image: url(../images/Rectangle.png);
   text-align: center;
   background-size: cover;
+  box-shadow: 0px 0px 12px 0px #00a2ff;
 }
 .single-play-1 {
   text-align: center;
@@ -2581,7 +2582,7 @@ p {
   background-color: #7a1bb4;
 }
 .play-text {
-  font-family: Poppins;
+  font-family:"Josefin Sans", sans-serif;
   font-weight: 800;
   font-size: 48px;
   line-height: 72px;
@@ -2589,7 +2590,7 @@ p {
   margin-left: 23px;
 }
 .play-text-p {
-  font-family: Poppins;
+  font-family:"Josefin Sans", sans-serif;
   font-size: 400;
   font-size: 20px;
   text-align: left;
@@ -2609,7 +2610,7 @@ p {
   left: 1164px;
   top: 379px;
 
-  font-family: "Poppins";
+  font-family: "Josefin Sans", sans-serif;;
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -2648,7 +2649,7 @@ p {
   left: 466px;
   top: 644px;
 
-  font-family: "Poppins";
+  font-family: "Josefin Sans", sans-serif;;
   font-style: normal;
   font-weight: 700;
   font-size: 30px;
@@ -2667,7 +2668,7 @@ p {
   left: calc(50% - 46px / 2 - 448px);
   top: 686px;
 
-  font-family: "Poppins";
+  font-family: "Josefin Sans", sans-serif;;
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -2693,7 +2694,7 @@ p {
   left: calc(50% - 47px / 2 + 8.5px);
   top: 712px;
 
-  font-family: "Poppins";
+  font-family: "Josefin Sans", sans-serif;;
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
@@ -2719,7 +2720,7 @@ p {
   left: 1164px;
   top: 268px;
 
-  font-family: "Poppins";
+  font-family: "Josefin Sans", sans-serif;;
   font-style: normal;
   font-weight: 700;
   font-size: 30px;

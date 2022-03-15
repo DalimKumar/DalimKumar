@@ -19,8 +19,8 @@ const Stake = ({ myModal, setMymodal }) => {
         <div className="myModal" onClick={() => setMymodal(false)}>
           <section
             className="game-play-section"
-            style={{ marginTop: "100px" }}
             id="stake"
+            style={{ paddingTop: "150px", paddingBottom: "300px" }}
           >
             <img
               className="left-img"
@@ -35,11 +35,21 @@ const Stake = ({ myModal, setMymodal }) => {
             <div className="container">
               <div className="row justify-content-center">
                 <div className="col-xs-12  col-xl-8">
-                  <div className="single-playstack">
+                  <div
+                    className="single-playstack"
+                    style={{ borderRadius: "8px" }}
+                  >
                     {/* <h5 className="subtitle">
                      Why Neo Narcos?
                   </h5>  */}
-                    <div className="container " style={{ padding: "32px" }}>
+                    <div
+                      className="container "
+                      style={{
+                        padding: "32px",
+                        boxShadow: " 0px 0px 12px 0px #00a2ff",
+                        borderRadius: "8px",
+                      }}
+                    >
                       {/* <!-- <img src="assets/images/bg-01 1.png" height="200px;" width="100%"> --> */}
                       <div className="row justify-content-center">
                         {stakeArray.map((el, i) => (
@@ -75,7 +85,10 @@ const Stake = ({ myModal, setMymodal }) => {
                   </div>
                 </div>
                 <div className="col-xs-12  col-xl-4 mx-auto mt-4 mt-xl-0">
-                  <div className="stack-play">
+                  <div
+                    className="stack-play"
+                    style={{ boxShadow: " 0px 0px 12px 0px #00a2ff" }}
+                  >
                     <div className="container " style={{ padding: "32px" }}>
                       <h2 className="stack-play-section">DAILY REVENUE</h2>
 
