@@ -1,13 +1,18 @@
 import React, { useContext, useState } from "react";
+import TheTLDRHowToPlay from "./TheTLDRHowToplay";
 import StakModal from "./Modal";
 import BankModal from "./NextModal";
 import { BlockchainContext } from "./context/BlockchainContext";
+import Stake from "./Stake";
 
 function Header() {
   const { currentSignerAddress, connectWallet } = useContext(BlockchainContext);
 
   const [stake, setStake] = useState(false);
   const [bank, setBank] = useState(false);
+
+  const [stackModal, setStackModal] = useState(false);
+  const [howToPlay, setHowToPlay] = useState(false);
 
   function connectWalletHandler() {
     connectWallet();
@@ -16,10 +21,16 @@ function Header() {
   const stakeHandler = () => {
     setStake(true);
   };
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
-      <StakModal stake={stake} setStake={setStake} />
-      <BankModal bank={bank} setBank={setBank} />
+      {/* <StakModal stake={stake} setStake={setStake} />
+      <BankModal bank={bank} setBank={setBank} /> */}
+      <Stake myModal={stackModal} setMymodal={setStackModal} />
+      <TheTLDRHowToPlay myModal={howToPlay} setMymodal={setHowToPlay} />
 
       <div className="Header">
         <header className="header">
@@ -92,18 +103,27 @@ function Header() {
                       id="main_menu"
                     >
                       <ul className="navbar-nav ml-auto">
-                      <li className="nav-item">
-                          <a href="howtoplay.html" className="nav-link"> 
+                        <li className="nav-item">
+                          <a
+                            className="nav-link"
+                            onClick={() => {
+                              setHowToPlay(true);
+                              scrollToTop();
+                            }}
+                          >
                             How to play
                           </a>
                         </li>
                         <li className="nav-item">
                           <a
                             // href="./Modal.js"
-                            onClick={stakeHandler}
+                            onClick={() => {
+                              setStackModal(true);
+                              scrollToTop();
+                            }}
                             className="nav-link"
-                            data-toggle="modal"
-                            data-target="#stake"
+                            // data-toggle="modal"
+                            // data-target="#mystake"
                           >
                             STAKE
                           </a>

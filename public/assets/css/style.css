@@ -2494,9 +2494,11 @@ p {
 .game-play-section {
   padding: 40px 0px 40px;
   background-image: url("../images/bg-01 1.png");
+  background-size: 80%;
+
   position: relative;
   background-repeat: no-repeat;
-  background-size: cover;
+
   background-position: center;
 }
 .game-play-section1 {
@@ -10371,6 +10373,37 @@ p {
 .commission-section .bottom-area .mybtn2 {
   font-size: 18px;
   margin-top: 20px;
+}
+
+/* stack Modal */
+
+.myModal {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  height: 1000vh;
+  z-index: 5001;
+  padding-top: 0px;
+  overflow-y: hidden;
+  cursor: pointer;
+  animation: show 400ms ease-in-out;
+}
+@keyframes show {
+  0% {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+}
+.close {
+  font-size: 30px;
+  position: absolute;
+  color: #fff !important;
+  z-index: 1000000000000;
+  top: 30px;
+  right: 30px;
+}
+.close2 {
+  top: 50px;
 }
 
 /* Reffer Section  End */
