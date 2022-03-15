@@ -1,25 +1,26 @@
 import Header from "./Header";
-import Maindiv from "./Maindiv";
-import Gameplay from "./Gameplay";
-import Latestarcive from "./Latestarcive";
-import Howtoplay from "./Howtoplay";
+import Home from "./Home";
 import Footer from "./Footer";
 import Modal from "./Modal";
 import Stake from "./Stake";
 import TheTLDRHowToPlay from "./TheTLDRHowToplay";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Maindiv />
-      <Gameplay />
-      <Latestarcive />
-      <Stake />
-      <TheTLDRHowToPlay />
-      <Howtoplay />
-      <Footer />
-      <Modal />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/stake" element={<Stake />}></Route>
+          <Route path="/howtoplay" element={<TheTLDRHowToPlay />}></Route>
+        </Routes>
+
+        <Footer />
+        <Modal />
+      </BrowserRouter>
     </div>
   );
 }

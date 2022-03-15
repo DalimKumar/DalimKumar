@@ -1,18 +1,15 @@
 import React, { useContext, useState } from "react";
 import TheTLDRHowToPlay from "./TheTLDRHowToplay";
+import { Link } from "react-router-dom";
 import StakModal from "./Modal";
 import BankModal from "./NextModal";
 import { BlockchainContext } from "./context/BlockchainContext";
-import Stake from "./Stake";
 
 function Header() {
   const { currentSignerAddress, connectWallet } = useContext(BlockchainContext);
 
   const [stake, setStake] = useState(false);
   const [bank, setBank] = useState(false);
-
-  const [stackModal, setStackModal] = useState(false);
-  const [howToPlay, setHowToPlay] = useState(false);
 
   function connectWalletHandler() {
     connectWallet();
@@ -21,16 +18,11 @@ function Header() {
   const stakeHandler = () => {
     setStake(true);
   };
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
 
   return (
     <>
       {/* <StakModal stake={stake} setStake={setStake} />*/}
       <BankModal bank={bank} setBank={setBank} />
-      <Stake myModal={stackModal} setMymodal={setStackModal} />
-      <TheTLDRHowToPlay myModal={howToPlay} setMymodal={setHowToPlay} />
 
       <div className="Header">
         <header className="header">
@@ -45,17 +37,20 @@ function Header() {
                       <ul className="top-social-links">
                         <li>
                           <a href="#">
-                            <img src="assets/images/icon-twitter.svg"></img>
+                            <img src="assets/images/icon-twitter.svg" alt="#" />
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                            <img src="assets/images/icon-discord.svg"></img>
+                            <img src="assets/images/icon-discord.svg" alt="#" />
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                            <img src="assets/images/icon-instagram.svg"></img>
+                            <img
+                              src="assets/images/icon-instagram.svg"
+                              alt="#"
+                            />
                           </a>
                         </li>
                       </ul>
@@ -84,9 +79,9 @@ function Header() {
               <div className="row">
                 <div className="col-lg-12">
                   <nav className="navbar navbar-expand-lg navbar-light">
-                    <a className="navbar-brand" href="index.html">
+                    <Link to="/" className="navbar-brand">
                       <img src="assets/images/logo.png" alt=""></img>
-                    </a>
+                    </Link>
                     <button
                       className="navbar-toggler"
                       type="button"
@@ -104,30 +99,23 @@ function Header() {
                     >
                       <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                          <a
-                            onClick={() => {
-                              setHowToPlay(true);
-                              scrollToTop();
-                            }}
-                            className="nav-link"
-                          >
-                            How To Play
-                          </a>
+                          <Link to="howtoplay" className="nav-link">
+                            HOW TO PlAY
+                          </Link>
                         </li>
                         <li className="nav-item">
-                          <a
+                          <Link
+                            to="/stake"
                             // href="./Modal.js"
-                            onClick={() => {
-                              setStackModal(true);
-                              scrollToTop();
-                            }}
+
                             className="nav-link"
                             // data-toggle="modal"
                             // data-target="#mystake"
                           >
                             STAKE
-                          </a>
+                          </Link>
                         </li>
+
                         <li className="nav-item">
                           <a
                             onClick={() => setBank(true)}

@@ -1564,6 +1564,7 @@ select:focus {
 .hero-area {
   position: relative;
   padding: 435px 0px 150px;
+  height:90vh;
   position: relative;
   background: #070b28;
   overflow: hidden;

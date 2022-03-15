@@ -17,7 +17,7 @@ function Howtoplay() {
           <div className="row">
             <div className="col-lg-12">
               <div className="section-heading">
-                <img src="assets/images/logo2.png" height="200px"></img>
+                <img src="assets/images/logo2.png" height="200px" alt=""></img>
                 <h2 className="title ">How to play NEO NARCOS</h2>
                 <h6 className="text">
                   Whoever controls the $SPICE production on world will control
@@ -39,7 +39,7 @@ function Howtoplay() {
 
           <div className="row">
             <div className="col-lg-12 text-center">
-              <a href="#" className="mybtn1">
+              <a href="/#" className="mybtn1">
                 Get started Now!
               </a>
             </div>
