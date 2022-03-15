@@ -2,9 +2,9 @@ import React from "react";
 function Gameplay() {
   const GamePlayArray = [
     "assets/images/Vector1.png",
-    "assets/images/Vector1.png",
-    "assets/images/Vector1.png",
-    "assets/images/Vector1.png",
+    "assets/images/Vector2.png",
+    "assets/images/Vector3.png",
+    "assets/images/Vector4.png",
   ];
   return (
     <>
