@@ -2524,9 +2524,10 @@ select:focus {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  line-height: 21px;
+  line-height: 110%;
   text-align: center;
   color: #ffffff;
+  padding-top: 10px;
 }
 #new h3,
 p {
