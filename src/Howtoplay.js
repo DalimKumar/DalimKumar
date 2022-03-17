@@ -32,7 +32,22 @@ function Howtoplay() {
           <div className="row justify-content-center">
             <div className="col-lg-12 col-md-12">
               <div className="s-h-play">
-                <img src="assets/images/h-play/bg.png" alt=""></img>
+                {/* <img src="assets/images/h-play/bg.png" alt=""></img> */}
+                <img
+                  src="assets/images/WEB.png"
+                  alt=""
+                  className="d-none d-xl-block"
+                ></img>
+                <img
+                  src="assets/images/TAB.png"
+                  alt=""
+                  className="d-none d-sm-block d-xl-none"
+                ></img>
+                <img
+                  src="assets/images/MBL.png"
+                  alt=""
+                  className="d-sm-none"
+                ></img>
               </div>
             </div>
           </div>

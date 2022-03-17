@@ -251,7 +251,6 @@ select:focus {
   box-shadow: inset 0px 0px 10px 7px #00a2ff;
 }
 
-
 .mybtn2 {
   text-transform: uppercase;
   font-weight: 600;
@@ -2469,20 +2468,22 @@ select:focus {
 
 .s-h-play {
   text-align: center;
-  margin-top: -75px;
+  /* margin-top: -75px; */
 }
 
 .s-h-play img {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   width: 100%;
   background-size: cover;
   background-position: center;
   /*height: 600px;*/
   display: inline-block;
+  object-fit: cover;
+  object-position: center;
 }
 
 .s-h-play h4 {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   color: #fff;
   font-size: 24px;
   line-height: 34px;

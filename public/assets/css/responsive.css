@@ -319,8 +319,8 @@
     padding-top: 50px;
   }
   .s-h-play {
-    margin-bottom: 30px;
-    height: 300px;
+    /* margin-bottom: 30px;
+    height: 300px; */
   }
   .hero-area {
     padding: 290px 0px 190px;
@@ -670,8 +670,8 @@
     -moz-text-stroke: 1px #fb3ab4;
   }
   .s-h-play img {
-    margin-bottom: -30px;
-    height: 300px;
+    /* margin-bottom: -30px;
+    height: 300px; */
   }
   .ticket-page .number-box .top-menu {
     display: block;
