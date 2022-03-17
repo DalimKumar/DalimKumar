@@ -1,12 +1,29 @@
 import React from "react";
 function Gameplay() {
   const GamePlayArray = [
-    { gif: "./assets/images/genesis.gif", img: "assets/images/Vector1.png" },
-    { gif: "./assets/images/gun.gif", img: "assets/images/Vector2.png" },
-    { gif: "./assets/images/terran.gif", img: "assets/images/Vector3.png" },
+    {
+      gif: "./assets/images/genesis.gif",
+
+      title: "FOUR FAMILIES",
+      text: "Genesis Narcos Drop. And so it begins...",
+    },
+    {
+      gif: "./assets/images/gun.gif",
+
+      title: "WAR ROOM",
+      text: "Saddle Up, Lock and Load",
+    },
+    {
+      gif: "./assets/images/terran.gif",
+
+      title: "TERRAN SYNDIACTE INVASION",
+      text: "All is fair in smuggling and war",
+    },
     {
       gif: "./assets/images/goldenstarship.gif",
-      img: "assets/images/Vector4.png",
+
+      title: "STARSHIPS ",
+      text: "Only the lucky can make it offworld",
     },
   ];
   return (
@@ -22,7 +39,7 @@ function Gameplay() {
           src="assets/images/game-play/right-img.png"
           alt=""
         ></img>
-        <div className="container">
+        <div className="container px-md-5">
           <div className="row ">
             <div className="col-lg-12">
               <div className="section-heading">
@@ -33,12 +50,20 @@ function Gameplay() {
           <div className="row justify-content-center">
             {GamePlayArray.map((el, i) => (
               <div
-                className="col-xl-3 col-lg-4 col-sm-6 col-md-6   d-flex justify-content-center align-items-center"
+                className="col-xl-3 col-lg-4 col-sm-6 col-md-6 col-10  d-flex justify-content-center align-items-center my-3"
                 key={i}
               >
                 <div className="single-play-1" style={{ position: "relative" }}>
                   <img src={el.gif} alt="" className="img-gif" />
-                  <img src={el.img} alt="" className="frame" />
+                  <img
+                    src="assets/images/Vector.png"
+                    alt=""
+                    className="frame"
+                  />
+                  <div className="singlePlayTextContainer">
+                    <h4 className="singlePlayTitle">{el.title}</h4>
+                    <p className="singlePlayText">{el.text}</p>
+                  </div>
                 </div>
               </div>
             ))}
