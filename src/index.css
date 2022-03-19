@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #011728 !important;
+  font-family: "Helvetica Now Display" !important;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  --blue: #03dafe;
+  --white: #fff;
+  --boxShadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.2) 0px 5px 10px, rgba(0, 0, 0, 0.4) 0px 15px 40px;
+  --backgroundColor: #011728;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0 !important;
+}
+a {
+  text-decoration: none !important;
+}
+@font-face {
+  font-family: "Geom Graphic";
+  src: url(/font/Geom\ Graphic\ W03\ Bold.2b9dcd46.ttf);
+}
+@font-face {
+  font-family: "Geom Graphic";
+  src: url(/font/Geom\ Graphic\ W03\ Regular.9d1882ed.ttf);
+}
+
+@font-face {
+  font-family: "Helvetica Now Display";
+  src: url(/font/HelveticaNowDisplay-Bold.06043486.ttf);
+}
+
+.title {
+  font-family: "Geom Graphic";
+  font-weight: 700;
+  color: #fff;
+}
+.text {
+  font-family: "Helvetica Now Display";
+  font-weight: 500;
+  color: #fff;
+}
+.image-container {
+  padding: 15px;
+  border: 1px solid var(--blue);
+  border-radius: 15px;
+
+  margin: 0 auto;
+}
+.image {
+  width: 100%;
+}
+.exlamation {
+  color: #03dafe;
+}
+@media only screen and (max-width: 991px) {
+  .title {
+    font-size: 2rem;
+  }
+  .text {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .title {
+    text-align: center;
+  }
+  .text {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .text {
+    font-size: 14px;
+  }
+}
