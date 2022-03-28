@@ -1,0 +1,17 @@
+<svg width="77" height="79" viewBox="0 0 77 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M73.5948 56.4872C70.662 61.5149 66.5937 65.7867 61.7151 68.9613C56.8365 72.1359 51.2829 74.1252 45.4982 74.7702C39.7135 75.4152 33.8582 74.698 28.4002 72.6759C22.9421 70.6539 18.0329 67.383 14.0647 63.1248C10.0965 58.8666 7.17952 53.7391 5.54686 48.1523C3.9142 42.5654 3.61114 36.674 4.66193 30.9491C5.71271 25.2242 8.08819 19.8245 11.5985 15.1816C15.1088 10.5387 19.6565 6.7814 24.8783 4.20996" stroke="url(#paint0_linear_109_1400)" stroke-width="6.78445" stroke-linecap="round"/>
+<defs>
+<linearGradient id="paint0_linear_109_1400" x1="41.3633" y1="0.371052" x2="41.3633" y2="100" gradientUnits="userSpaceOnUse">
+<stop stop-color="#00FFF1"/>
+<stop offset="1" stop-color="#FF06C8"/>
+</linearGradient>
+</defs>
+  <animateTransform
+    from="0 0 0"
+    to="360 0 0"
+    attributeName="transform"
+    type="rotate"
+    repeatCount="indefinite"
+    dur="1300ms"
+  />
+</svg>
