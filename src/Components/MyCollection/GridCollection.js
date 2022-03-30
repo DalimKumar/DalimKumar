@@ -1,13 +1,15 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 const Wrapper = styled.div`
   .collection {
     background: rgba(0, 0, 0, 1);
     box-shadow: 0px 28px 62px 1px rgba(0, 0, 0, 0.25);
     border-radius: 14px;
     position: relative;
-    z-index: -1;
+    z-index: 1;
   }
   .level-container {
     box-shadow: 0px 28px 62px 1px rgba(0, 0, 0, 0.25);
@@ -58,7 +60,7 @@ const Wrapper = styled.div`
     }
   }
 `;
-const GridCollection = ({ data }) => {
+const GridCollection = ({ data, firstNft, setFirstNft }) => {
   return (
     <Wrapper className="px-3 px-sm-0">
       <Row>
@@ -84,10 +86,13 @@ const GridCollection = ({ data }) => {
                     <p className="info">Top:{el.top}</p>
                     <p className="info">Bottom: {el.bottom}</p>
                   </div>
-
-                  <a href="/#" className="myButton">
+                  <Link
+                    to="/devolve"
+                    className="myButton"
+                    onClick={() => setFirstNft(data[i])}
+                  >
                     <span className="buttonText">Develope</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

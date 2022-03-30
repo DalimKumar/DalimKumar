@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import styled from "styled-components";
 import { useMyContext } from "../Context";
+import Menubar from "../Menubar/Menubar";
 
 const Wrapper = styled.div`
-  padding-bottom: 100px;
-  padding-top: 100px;
   min-width: 100%;
   min-height: 100vh;
   background-image: url(./images/myCollection.png);
@@ -28,9 +27,9 @@ const Wrapper = styled.div`
     font-family: "Inter";
     font-style: normal;
     font-weight: 900;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 100%;
-    background: linear-gradient(97.03deg, #00fff1 -27.9%, #ff06c8 132.99%);
+    background: linear-gradient(97.03deg, #00fff1 -12.9%, #ff06c8 132.99%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -42,7 +41,7 @@ const Wrapper = styled.div`
     font-family: "Inter";
     font-style: normal;
     font-weight: 600;
-    font-size: 27px;
+    font-size: 22px;
     line-height: 100%;
     background: linear-gradient(97.03deg, #00fff1 -27.9%, #ff06c8 132.99%);
     -webkit-background-clip: text;
@@ -59,7 +58,7 @@ const Wrapper = styled.div`
     grid-gap: 15px;
 
     background: rgba(0, 0, 0, 0.8);
-    height: 75vh;
+    height: 65vh;
     overflow-y: scroll;
   }
 
@@ -82,7 +81,11 @@ const Wrapper = styled.div`
   }
   .nft {
     background: #000;
+    border-radius: 8px 8px 8px 8px;
     cursor: pointer;
+  }
+  .nft img {
+    border-radius: 8px 8px 0 0;
   }
   .active {
     position: relative;
@@ -161,7 +164,7 @@ const AllNft = ({ setConfirmButtonActive, countNft }) => {
     {
       img: "./images/develope/1.png",
       level: "LVL 1",
-      number: 5376,
+      number: 5377,
       type: "Energy",
       star: "./images/stars/energy.svg",
     },
@@ -1050,8 +1053,11 @@ const AllNft = ({ setConfirmButtonActive, countNft }) => {
   ];
   return (
     <Wrapper>
-      <Col xs={10} md={10} className="mx-auto">
-        <div className="d-flex align-items-start align-items-sm-center flex-column flex-sm-row py-5">
+      <div className="py-3 pt-4 pt-sm-0">
+        <Menubar />
+      </div>
+      <Col xs={10} md={10} className="mx-auto ">
+        <div className="d-flex align-items-start align-items-sm-center flex-column flex-sm-row  py-5">
           <p className="title">DEVOLVE</p>
           <p className="text pt-2 pt-md-0 px-sm-3">
             Select an NFT to DEVOLVE ({countNft.length}/2)
@@ -1067,10 +1073,18 @@ const AllNft = ({ setConfirmButtonActive, countNft }) => {
                   setSelected(i);
                   setConfirmButtonActive(true);
                   if (firstNft) {
-                    setFirstNft(nftArray[i]);
+                    if (typeof firstNft === "object") {
+                      setFirstNft(firstNft);
+                    } else {
+                      setFirstNft(nftArray[i]);
+                    }
                   }
                   if (secondNft) {
-                    setSecondNft(nftArray[i]);
+                    if (typeof secondNft === "object") {
+                      setSecondNft(secondNft);
+                    } else {
+                      setSecondNft(nftArray[i]);
+                    }
                   }
                 }}
               >

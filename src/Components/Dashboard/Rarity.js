@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, ProgressBar } from "react-bootstrap";
+import { ProgressBar } from "react-bootstrap";
 import styled from "styled-components";
 const Wrapper = styled.div`
   position: relative;

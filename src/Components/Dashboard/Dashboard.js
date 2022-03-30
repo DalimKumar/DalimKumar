@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Row, Col } from "react-bootstrap";
 import styled from "styled-components";
+import Menubar from "../Menubar/Menubar";
 import Rarity from "./Rarity";
 import SurvivorSupply from "./SurvivorSupply";
 import TotalNft from "./TotalNft";
@@ -13,7 +14,8 @@ const Wrapper = styled.div`
   background-size: cover;
   background-position: center center;
   display: flex;
-  justify-content: center;
+
+  flex-direction: column;
   align-items: center;
   box-sizing: border-box;
   position: relative;
@@ -63,7 +65,8 @@ const Wrapper = styled.div`
 const Dashboard = () => {
   return (
     <Wrapper className="px-sm-5 ">
-      <Row className="w-100 justify-content-center">
+      <Menubar />
+      <Row className="w-100 justify-content-center py-5 mt-5">
         <Col sm={10} md={6} lg={6} xl={5} xxl={3} className="my-3 mx-auto">
           <SurvivorSupply />
         </Col>

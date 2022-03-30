@@ -3,8 +3,10 @@ import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Menubar from "../Menubar/Menubar";
-import Minting from "../Minting/Minting";
+
 import MyRange from "../MyRange/MyRanges";
+
+import { useMyContext } from "../Context";
 const Wrapper = styled.div`
 
   min-width: 100%;
@@ -31,6 +33,7 @@ const Wrapper = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     display: block;
+    z-index:1;
   }
 
   .image {
@@ -39,7 +42,7 @@ const Wrapper = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     display: block;
- 
+  z-index:-1;
     width: 100%;
   }
   .title {
@@ -77,9 +80,28 @@ const Wrapper = styled.div`
     width:18%;
     cursor: pointer;
   }
-  .active {
+  .active{
+    color:#fff;
+  }
+  .active1 {
     background: linear-gradient(to right, #d2216c, #ff06c8);
   }
+  .active2 {
+    background: linear-gradient(to right,#A4670D,#FF9B06);
+  }
+  .active3{
+    background: linear-gradient(to right,#00FFF1,#057794);
+  
+  }
+  .active4{
+    background: linear-gradient(to right,#ABFFFA,#9C8CFF);
+  
+  }
+  .active5{
+    background: linear-gradient(to right,#FFF500,#FF06C8);
+  
+  }
+  
   .myButton:first-child {
     margin-left: 0;
   }
@@ -328,18 +350,19 @@ const Wrapper = styled.div`
   }
 `;
 const Mint = () => {
-  const [mint, setMint] = useState(false);
+  const { setMint } = useMyContext();
   const [value, setValue] = useState([1]);
   const [selected, setSelected] = useState(null);
   const [mintText, setMintText] = useState(`Please select a <br /> Bloodline`);
-  console.log(mint);
+  const [price, setPrice] = useState(0.3);
 
   const buttonArray = [
     {
       buttonText: "Fire",
       icon: "./images/fire.svg",
       icon2: "./images/firewhite.svg",
-      text: "1279 of 1280",
+      currentValue: 1279,
+      maxValue: 1280,
     },
     {
       buttonText: "Earth",
@@ -352,13 +375,15 @@ const Mint = () => {
       buttonText: "Water",
       icon: "./images/water.svg",
       icon2: "./images/waterwhite.svg",
-      text: "1279 of 1280",
+      currentValue: 1279,
+      maxValue: 1280,
     },
     {
       buttonText: "Air",
       icon: "./images/air.svg",
       icon2: "./images/airwhite.svg",
-      text: "589 of 1280",
+      currentValue: 1279,
+      maxValue: 1280,
     },
     {
       buttonText: "Energy",
@@ -367,76 +392,89 @@ const Mint = () => {
       text: "SOLD OUT",
     },
   ];
+
   return (
-    <>
-      {mint ? (
-        <Minting />
-      ) : (
-        <Wrapper>
-          <Menubar />
-          <div className="mx-auto main ">
-            <div className="image-wrapper w-100">
-              <img
-                src="./images/bloodlineDekstop.svg"
-                alt="#"
-                className="image w-100 d-none d-md-block"
-              />
-              <img
-                src="./images/bloodlineMobile.svg"
-                alt=""
-                className="image  d-block d-md-none"
-              />
-            </div>
-            <h2 className="title">BLOODLINE</h2>
-            <Row className="buttonContainer py-4 w-100 px-0 mx-0">
-              {buttonArray.map((el, i) => (
-                <Col
-                  xs={3}
-                  className={`myButton px-2 py-1 myButton${i} ${
-                    selected === i + 1 && `active${i} active`
-                  }`}
-                  key={i}
-                  onClick={() => {
-                    setValue([i + 1]);
-                    setSelected(i + 1);
-                    setMintText("Mint 3 Fire Survivors <br/> for 0.3ETH");
-                  }}
-                >
-                  <div
-                    className={`d-flex align-items-center justify-content-center `}
-                  >
-                    <span className="button-text">{el.buttonText}</span>{" "}
-                    <img
-                      src={selected === i + 1 ? el.icon2 : el.icon}
-                      alt="#"
-                      className="icon"
-                    />
-                  </div>
-                  <p className="text">{el.text}</p>
-                </Col>
-              ))}
-            </Row>
-            <h2 className="title">QUANTITY</h2>
-            <MyRange value={value} setValue={setValue} />
-            <div className="d-flex justify-content-between align-items-center ">
-              <h2
-                className="title title-bottom px-md-5"
-                dangerouslySetInnerHTML={{ __html: mintText }}
-              ></h2>
-              <button
-                className={`mintButton px-4 py-2 px-lg-5 py-lg-3 ${
-                  !selected && "disabled"
-                }`}
-                style={{ opacity: "" }}
-                onClick={() => setMint(true)}
+    <Wrapper>
+      <Menubar />
+      <div className="mx-auto main ">
+        <div className="image-wrapper w-100">
+          <img
+            src="./images/bloodlineDekstop.svg"
+            alt="#"
+            className="image w-100 d-none d-md-block"
+          />
+          <img
+            src="./images/bloodlineMobile.svg"
+            alt=""
+            className="image  d-block d-md-none"
+          />
+        </div>
+        <h2 className="title">BLOODLINE</h2>
+        <Row className="buttonContainer py-4 w-100 px-0 mx-0">
+          {buttonArray.map((el, i) => (
+            <Col
+              xs={3}
+              className={`myButton px-2 py-1 myButton${i} ${
+                selected === i + 1 && `active${i + 1} active `
+              }`}
+              key={i}
+              onClick={() => {
+                setSelected(i + 1);
+                setMintText(
+                  `Mint ${value[0]} ${el.buttonText} Survivors <br/> for ${
+                    value[0] * price.toFixed(2)
+                  }ETH`
+                );
+              }}
+            >
+              <div
+                className={`d-flex align-items-center justify-content-center `}
               >
-                <span className="minttext">Mint</span>
-              </button>
-            </div>
-          </div>
-        </Wrapper>
-      )}
-    </>
+                <span className="button-text">{el.buttonText}</span>{" "}
+                <img
+                  src={selected === i + 1 ? el.icon2 : el.icon}
+                  alt="#"
+                  className="icon"
+                />
+              </div>
+              {el.currentValue && el.maxValue ? (
+                <p className="text">
+                  {el.currentValue} of {el.maxValue}
+                </p>
+              ) : (
+                <p className="text">{el.text}</p>
+              )}
+            </Col>
+          ))}
+        </Row>
+        <h2 className="title">QUANTITY</h2>
+        <MyRange
+          value={value}
+          setValue={setValue}
+          selected={selected}
+          setMintText={setMintText}
+          price={price}
+          buttonText={selected && buttonArray[selected - 1].buttonText}
+        />
+        <div className="d-flex justify-content-between align-items-center ">
+          <h2
+            className="title title-bottom px-md-5"
+            dangerouslySetInnerHTML={{ __html: mintText }}
+          ></h2>
+          <Link
+            to="/"
+            className={`mintButton px-4 py-2 px-lg-5 py-lg-3 ${
+              !selected && "disabled"
+            }`}
+            onClick={() => {
+              setMint(true);
+            }}
+          >
+            <span className="minttext">Mint</span>
+          </Link>
+        </div>
+      </div>
+    </Wrapper>
   );
 };
 export default Mint;

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-
 import WarpSpeed from "../../warpspeed";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Minting from "../Minting/Minting";
+import { useMyContext } from "../Context";
 
 const Wrapper = styled.div`
   width: 100%;
   background: #000;
   position: fixed;
-  z-index: -1;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100vw;
@@ -18,6 +19,7 @@ const Wrapper = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
+  overflow-x:hidden;
   .logo {
     position: absolute;
     left: 50%;
@@ -119,14 +121,12 @@ const Wrapper = styled.div`
   z-index:1;
   transition:1s;
 }
-
 .left{
   left:0;
 }
 .right{
   right:0;
 }
-
 .rightAnimation{
   right:15%;
 
@@ -181,6 +181,9 @@ const Wrapper = styled.div`
   }
   }
 @media only screen and (max-width:520px){
+  .spinner,.connect-container,.connect,.image{
+    padding-top:0;
+  }
   .rightAnimation{
     right:7%;
   }
@@ -199,6 +202,7 @@ const Wrapper = styled.div`
 }
 `;
 const Connect = () => {
+  const { mint } = useMyContext();
   const [loader, setLoader] = useState(true);
   useEffect(() => {
     new WarpSpeed("bkFrame", {
@@ -213,59 +217,81 @@ const Connect = () => {
     setTimeout(() => {
       setLoader(false);
     }, 1500);
-  });
+  }, []);
 
   return (
-    <Wrapper>
-      <img src="./images/logo.svg" alt="#" className="logo" />
-      {loader && <img src="./images/spinner.svg" alt="" className="spinner" />}
-      <div id="background">
-        <canvas id="bkFrame" width="3276" height="1220"></canvas>
-      </div>
-      {!loader && (
+    <>
+      {mint ? (
+        <Minting />
+      ) : (
         <>
-          <div className="image left">
-            {" "}
-            <img src="./images/left.svg" alt="" className="w-100 animated" />
-          </div>
-
-          <div className="image right">
-            <img src="./images/right.svg" alt="" className="w-100 animated" />
-          </div>
-          <div className="connect-container d-flex justify-content-between align-items-cener animated">
-            <img
-              src="./images/connectImg.svg"
-              alt=""
-              className="connectImg w-100"
-            />
-            <div className="connect ">
-              <Link
-                to="/mint"
-                className="connectButton d-block px-3 py-2"
-                onMouseEnter={() => {
-                  document
-                    .querySelector(".left")
-                    .classList.add("leftAnimation");
-                  document
-                    .querySelector(".right")
-                    .classList.add("rightAnimation");
-                }}
-                onMouseLeave={() => {
-                  document
-                    .querySelector(".left")
-                    .classList.remove("leftAnimation");
-                  document
-                    .querySelector(".right")
-                    .classList.remove("rightAnimation");
-                }}
-              >
-                <span className="buttonText">Connect</span>
-              </Link>
+          <Wrapper>
+            <div id="background">
+              <canvas id="bkFrame" width="100%" height="100%"></canvas>
             </div>
-          </div>
+            <img src="./images/logo.svg" alt="#" className="logo" />
+            {loader && (
+              <img src="./images/spinner.svg" alt="" className="spinner" />
+            )}
+
+            {!loader && (
+              <>
+                <div className="image left">
+                  {" "}
+                  <img
+                    src="./images/left.svg"
+                    alt=""
+                    className="w-100 animated"
+                  />
+                </div>
+
+                <div className="image right">
+                  <img
+                    src="./images/right.svg"
+                    alt=""
+                    className="w-100 animated"
+                  />
+                </div>
+                <div className="connect-container d-flex justify-content-between align-items-cener animated">
+                  <img
+                    src="./images/connectImg.svg"
+                    alt=""
+                    className="connectImg w-100"
+                  />
+                  <div className="connect ">
+                    <Link
+                      to="/mint"
+                      className="connectButton d-block px-3 py-2"
+                      onMouseEnter={() => {
+                        document
+                          .querySelector(".left")
+                          .classList.add("leftAnimation");
+                        document
+                          .querySelector(".right")
+                          .classList.add("rightAnimation");
+                      }}
+                      onMouseLeave={() => {
+                        document
+                          .querySelector(".left")
+                          .classList.remove("leftAnimation");
+                        document
+                          .querySelector(".right")
+                          .classList.remove("rightAnimation");
+                      }}
+                    >
+                      <span className="buttonText">Connect</span>
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
+          </Wrapper>
         </>
-      )}
-    </Wrapper>
+      )}{" "}
+      <div id="background">
+        <canvas id="bkFrame" width="0" height="0"></canvas>
+      </div>
+    </>
   );
 };
 export default Connect;

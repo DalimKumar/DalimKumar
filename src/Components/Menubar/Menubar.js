@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import React from "react";
+
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import HamburgerIcon from "../HamburgerIcon/HamburgerIcon";
-import { GiHamburgerMenu } from "react-icons/gi";
+
 import { useMyContext } from "../Context";
 const Wrapper = styled.div`
   top: 0;
@@ -12,6 +12,9 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  .menubarContainer {
+    padding-top: 12px;
+  }
   .sidetext {
     padding-top: 10px;
   }
@@ -34,7 +37,7 @@ const Wrapper = styled.div`
     font-family: "Inter";
     font-style: normal;
     font-weight: 600;
-    font-size: 27px;
+    font-size: 25px;
     line-height: 100%;
     background: linear-gradient(97.03deg, #00fff1 -27.9%, #ff06c8 132.99%);
     -webkit-background-clip: text;
@@ -44,10 +47,10 @@ const Wrapper = styled.div`
     text-shadow: 0px 0px 10px rgba(0, 255, 241, 0.26);
   }
 
-  .active {
+  .actives {
     position: relative;
   }
-  .active::before {
+  .actives::before {
     content: "";
     position: absolute;
     bottom: -2px;
@@ -98,17 +101,29 @@ const Wrapper = styled.div`
       padding-right: 10px;
     }
   }
+  @media only screen and (max-width: 520px) {
+    .sidebar {
+      width: 100%;
+    }
+  }
 `;
 const Menubar = () => {
-  const { navbar, setNavbar } = useMyContext();
+  const { navbar, setNavbar, mintSuccess } = useMyContext();
 
-  const menubar = [
-    { name: "Home", to: "home" },
-    { name: "Mint", to: "mint" },
-    { name: "Devolve", to: "develve" },
-  ];
+  const menubar = mintSuccess
+    ? [
+        { name: "Home", to: "/home" },
+        { name: "My Collection", to: "/collection" },
+        { name: "Mint", to: "/mint" },
+        { name: "Devolve", to: "/devolve" },
+      ]
+    : [
+        { name: "Home", to: "/home" },
+        { name: "Mint", to: "/mint" },
+        { name: "Devolve", to: "/devolve" },
+      ];
   return (
-    <Wrapper className="px-4  px-lg-5 pt-3 ">
+    <Wrapper className="px-4  px-xl-5 pt-3 ">
       <div className="d-flex justify-content-between align-items-center w-100">
         <div className="d-flex">
           {!navbar && (
@@ -118,13 +133,13 @@ const Menubar = () => {
             </>
           )}
 
-          <div className="px-3  align-items-center pt-3 d-none d-lg-flex">
+          <div className="px-3   align-items-center menubarContainer d-none d-lg-flex">
             {menubar.map((el, i) => (
               <NavLink
                 to={el.to}
                 key={i}
                 className={({ isActive }) =>
-                  isActive ? "active menuItem mx-2" : "inactive menuItem mx-2"
+                  isActive ? "actives menuItem mx-2" : "inactive menuItem mx-2"
                 }
               >
                 {el.name}
@@ -146,14 +161,15 @@ const Menubar = () => {
           />
           <img src="./images/logo.svg" alt="#" className="pb-1 logo" />
         </div>
-        <div className="d-flex flex-column  pt-4 ">
+        <div className="d-flex flex-column align-items-start  pt-4 ">
           {menubar.map((el, i) => (
             <NavLink
-              to={el.to}
               key={i}
+              to={el.to}
+              onClick={() => setNavbar((prev) => !prev)}
               className={({ isActive }) =>
                 isActive
-                  ? "active menuItem mx-2 my-3"
+                  ? "actives menuItem mx-2 my-3"
                   : "inactive menuItem mx-2 my-3"
               }
             >

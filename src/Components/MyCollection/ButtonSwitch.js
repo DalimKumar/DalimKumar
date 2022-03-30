@@ -1,6 +1,4 @@
 import React from "react";
-
-import { Col } from "react-bootstrap";
 import styled from "styled-components";
 import { useMyContext } from "../Context";
 
@@ -52,13 +50,14 @@ const SwitchButton = () => {
           className="left w-50  d-flex justify-content-center align-items-center"
           onClick={leftClick}
         >
-          <img src="/images/card/list.svg" alt="#" />
+          <img src="/images/card/grid.svg" alt="#" />
         </div>
         <div
           className="right w-50 d-flex justify-content-center align-items-center"
           onClick={rightClick}
         >
-          <img src="/images/card/grid.svg" alt="#" />
+          {" "}
+          <img src="/images/card/list.svg" alt="#" />
         </div>
       </div>
     </Wrapper>

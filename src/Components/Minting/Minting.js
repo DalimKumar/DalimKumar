@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import styled from "styled-components";
+import { useMyContext } from "../Context";
 import Loader from "../Loader/Loader";
+import MintSucessFull from "../MintSuccesFull/MintSuccesFull";
 const Wrapper = styled.div`
   min-width: 100%;
   min-height: 100vh;
@@ -15,11 +17,19 @@ const Wrapper = styled.div`
 
   align-items: center;
   box-sizing: border-box;
-  position: relative;
+
   z-index: 1;
   box-sizing: border-box;
 
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    top: 70px;
+  }
   .main {
+    padding-top: 180px;
     width: 800px;
     position: relative;
   }
@@ -46,6 +56,7 @@ const Wrapper = styled.div`
     background-clip: text;
     text-fill-color: transparent;
     text-shadow: 0px 0px 10px rgba(0, 255, 241, 0.26);
+    padding-top: 150px;
   }
   @media only screen and (max-width: 991px) {
     .main {
@@ -63,6 +74,11 @@ const Wrapper = styled.div`
       font-size: 60px;
     }
   }
+  @media only screen and (max-width: 520px) {
+    .main {
+      padding-top: 0;
+    }
+  }
   @media only screen and (max-width: 480px) {
     .main {
       width: 90%;
@@ -73,14 +89,29 @@ const Wrapper = styled.div`
   }
 `;
 const Minting = () => {
+  const { mintSuccess, setMintSuccess } = useMyContext();
+  useEffect(() => {
+    setTimeout(() => {
+      setMintSuccess(true);
+    }, 1500);
+  }, []);
   return (
-    <Wrapper>
-      <div className="main">
-        <img src="./images/minting.svg" alt="#" className="image w-100" />
-        <h3 className="minting">MINTING...</h3>
-      </div>
-      <Loader />
-    </Wrapper>
+    <>
+      {mintSuccess ? (
+        <MintSucessFull />
+      ) : (
+        <Wrapper>
+          <img src="./images/logo.svg" alt="#" className="logo" />
+          <div className="main">
+            <img src="./images/minting.svg" alt="#" className="image w-100" />
+            <h3 className="minting">MINTING...</h3>
+          </div>
+          <div className="mt-4">
+            <Loader />
+          </div>
+        </Wrapper>
+      )}
+    </>
   );
 };
 export default Minting;

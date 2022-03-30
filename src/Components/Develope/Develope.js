@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import Overlay from "./Overlay";
 import PopupConfirmation from "./PopupConfirmation";
 import Developing from "../Developing/Developing";
@@ -8,10 +8,9 @@ import styled from "styled-components";
 import { useMyContext } from "../Context";
 
 import AllNft from "./AllNft";
+import Menubar from "../Menubar/Menubar";
 const Wrapper = styled.div`
-  padding-top: 120px;
-  padding-bottom: 80px;
-
+  padding-bottom: 100px;
   min-width: 100%;
   min-height: 100vh;
   background-image: url(./images/myCollection.png);
@@ -20,11 +19,14 @@ const Wrapper = styled.div`
   position: relative;
   z-index: 1;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-
+  .overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.8);
+  }
   .title {
     font-family: "Inter";
     font-style: normal;
@@ -45,7 +47,6 @@ const Wrapper = styled.div`
 
     position: relative;
     background: #000;
-    transition: 1s;
   }
   .choose:before {
     content: "";
@@ -58,7 +59,7 @@ const Wrapper = styled.div`
     background: linear-gradient(-45deg, #ff06c8 70%, #fff500 100%);
     border-radius: calc(2 * 5px);
     z-index: -5;
-    animation: animatedgradient 3s ease alternate infinite;
+
     background-size: 300% 300%;
   }
   .devlopeAgain:hover {
@@ -105,6 +106,7 @@ const Wrapper = styled.div`
     background-clip: text;
     text-fill-color: transparent;
     text-shadow: 0px 0px 10px rgba(0, 255, 241, 0.26);
+    padding-right: 10px;
   }
   .image {
     height: 83%;
@@ -144,7 +146,7 @@ const Wrapper = styled.div`
     width: 100%;
     position: fixed;
     bottom: 0;
-    z-index: 2;
+    z-index: 6;
     background: #272e4f;
     justify-self: flex-end;
   }
@@ -194,15 +196,16 @@ const Wrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 5;
+    z-index: 10;
   }
 
   .myModal {
-    position: absolute;
+    position: fixed;
+    top: 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1;
+    z-index: 5;
   }
   .animation {
     animation: show 200ms ease-in-out;
@@ -227,6 +230,9 @@ const Wrapper = styled.div`
     }
   }
   @media only screen and (max-width: 991px) {
+    .title {
+      font-size: 40px;
+    }
     .text {
       font-size: 20px;
     }
@@ -250,12 +256,22 @@ const Wrapper = styled.div`
       height: 400px;
       margin: 0 auto;
     }
+    .buttonText {
+      text-shadow: none;
+    }
   }
   @media only screen and (max-width: 520px) {
+    .title {
+      font-size: 35px;
+    }
     .text {
       font-size: 16px;
       line-height: 120%;
     }
+    .zoombie-text {
+      font-size: 40px;
+    }
+
     .buttonText {
       font-size: 16px;
     }
@@ -265,6 +281,9 @@ const Wrapper = styled.div`
     }
   }
   @media only screen and (max-width: 400px) {
+    .title {
+      font-size: 30px;
+    }
     .level {
       font-size: 16px;
     }
@@ -279,8 +298,15 @@ const Wrapper = styled.div`
   }
 `;
 const Develope = () => {
-  const { firstNft, setFirstNft, secondNft, setSecondNft } = useMyContext();
-  const [modal, setModal] = useState(false);
+  const {
+    firstNft,
+    setFirstNft,
+    secondNft,
+    setSecondNft,
+    showNft,
+    setShowNft,
+  } = useMyContext();
+  const [showAllNft, setShowAllNft] = useState(false);
   const [devolveModal, setDevolpeModal] = useState(false);
   const [devolpingModal, setDevolpingModal] = useState(false);
   const [devolveAgain, setDevolveAgain] = useState(false);
@@ -303,8 +329,9 @@ const Develope = () => {
 
   return (
     <Wrapper>
-      <Col xs={12} sm={11} xl={11} xxl={10} className="mx-auto">
-        <h2 className="title py-5">DEVOLVE</h2>
+      <Menubar />
+      <Col xs={12} lg={12} xl={11} xxl={10} className="mx-auto pt-5 px-4">
+        {!showAllNft && <h2 className="title pb-3 py-sm-5">DEVOLVE</h2>}
       </Col>
       <Col xs={12} sm={11} xl={10} xxl={9} className="mx-auto">
         <div className="d-flex flex-column flex-md-row justify-content-between w-100  px-xxl-5">
@@ -321,7 +348,7 @@ const Develope = () => {
                     setDevelopeButtonActive(true);
                   }
 
-                  setModal(!firstNft || !secondNft ? true : false);
+                  setShowAllNft(!firstNft || !secondNft ? true : false);
                   el.setNft(!firstNft || !secondNft ? true : el.nft);
                 }
               }}
@@ -343,9 +370,11 @@ const Develope = () => {
                     <p className="level">
                       #{el.nft.number} | {el.nft.level}
                     </p>
-                    <div className="type">
+                    <div className="type d-flex align-items-center">
                       {el.nft.type}{" "}
-                      <img src={el.nft.star} alt="#" className="star" />
+                      {el.nft.star && (
+                        <img src={el.nft.star} alt="#" className="star" />
+                      )}
                     </div>
                   </div>
                 )}
@@ -372,12 +401,12 @@ const Develope = () => {
               Select an NFT to DEVOLVE ({countNft.length}/2)
             </p>
           )}
-          {modal ? (
+          {showAllNft ? (
             <button
               className={confirmButtonActive ? "myButton" : "myButton deactive"}
               onClick={() => {
                 if (confirmButtonActive) {
-                  setModal(false);
+                  setShowAllNft(false);
                 }
               }}
             >
@@ -398,7 +427,7 @@ const Develope = () => {
               }
               onClick={() => {
                 if (developeButtonAcitive) {
-                  setModal(false);
+                  setShowAllNft(false);
                   setDevelopeButtonActive(firstNft && secondNft);
                   setDevolpeModal(true);
                   if (devolveAgain) {
@@ -421,7 +450,7 @@ const Develope = () => {
           )}
         </Col>
       </div>
-      {modal && (
+      {showAllNft && (
         <div className="myModal w-100">
           <AllNft
             setConfirmButtonActive={setConfirmButtonActive}
@@ -435,6 +464,7 @@ const Develope = () => {
             setDevolpeModal={setDevolpeModal}
             setDevolpingModal={setDevolpingModal}
           />
+          <div className="overlay"></div>
         </div>
       )}
       {devolpingModal && (
@@ -447,6 +477,7 @@ const Develope = () => {
           />
         </div>
       )}
+      {devolveModal && <div className="overlay"></div>}
     </Wrapper>
   );
 };

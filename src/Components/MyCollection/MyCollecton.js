@@ -1,23 +1,22 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import styled from "styled-components";
 import { useMyContext } from "../Context";
+import Menubar from "../Menubar/Menubar";
 import SwitchButton from "./ButtonSwitch";
 import GridCollection from "./GridCollection";
 import ListCollection from "./ListCollection";
 const Wrapper = styled.div`
-  padding: 100px 0;
-  padding-top: 150px;
-  min-width: 100%;
-  min-height: 100vh;
-  display: block;
-  background-image: url(./images/myCollection.png);
-  background-size: cover;
-  background-position: center center;
+    min-width: 100%;
+    min-height: 100vh;
+    display: block;
+    background-image: url(./images/myCollection.png);
+    background-size: cover;
+    background-position: center center;
 
-  position: relative;
-  z-index: 1;
-  box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
 
   .title {
     font-family: "Inter";
@@ -81,10 +80,10 @@ const Wrapper = styled.div`
   }
 `;
 const MyCollection = () => {
-  const { showingType } = useMyContext();
+  const { showingType, setFirstNft } = useMyContext();
   const collectionArray = [
     {
-      img: "./images/card/1.png",
+      img: "./images/develope/1.png",
       level: "Level 1: Survivor",
       number: "5,376",
       head: "Braids & Halo",
@@ -98,7 +97,7 @@ const MyCollection = () => {
       star: "./images/stars/energy.svg",
     },
     {
-      img: "./images/card/1.png",
+      img: "./images/develope/1.png",
       level: "Level 1: Survivor",
       number: "5,376",
       head: "Braids & Halo",
@@ -109,9 +108,10 @@ const MyCollection = () => {
       bottom: "Black",
       develope: true,
       type: "Energy",
+      star: "./images/stars/energy.svg",
     },
     {
-      img: "./images/card/1.png",
+      img: "./images/develope/1.png",
       level: "Level 1: Survivor",
       number: "5,376",
       head: "Braids & Halo",
@@ -122,9 +122,10 @@ const MyCollection = () => {
       bottom: "Black",
       develope: true,
       type: "Energy",
+      star: "./images/stars/energy.svg",
     },
     {
-      img: "./images/card/1.png",
+      img: "./images/develope/1.png",
       level: "Level 1: Survivor",
       number: "5,376",
       head: "Braids & Halo",
@@ -135,9 +136,10 @@ const MyCollection = () => {
       bottom: "Black",
       develope: true,
       type: "Energy",
+      star: "./images/stars/energy.svg",
     },
     {
-      img: "./images/card/1.png",
+      img: "./images/develope/1.png",
       level: "Level 1: Survivor",
       number: "5,376",
       head: "Braids & Halo",
@@ -148,9 +150,10 @@ const MyCollection = () => {
       bottom: "Black",
       develope: true,
       type: "Energy",
+      star: "./images/stars/energy.svg",
     },
     {
-      img: "./images/card/1.png",
+      img: "./images/develope/1.png",
       level: "Level 1: Survivor",
       number: "5,376",
       head: "Braids & Halo",
@@ -161,9 +164,10 @@ const MyCollection = () => {
       bottom: "Black",
       develope: true,
       type: "Energy",
+      star: "./images/stars/energy.svg",
     },
     {
-      img: "./images/card/1.png",
+      img: "./images/develope/1.png",
       level: "Level 1: Survivor",
       number: "5,376",
       head: "Braids & Halo",
@@ -174,9 +178,10 @@ const MyCollection = () => {
       bottom: "Black",
       develope: true,
       type: "Energy",
+      star: "./images/stars/energy.svg",
     },
     {
-      img: "./images/card/1.png",
+      img: "./images/develope/1.png",
       level: "Level 1: Survivor",
       number: "5,376",
       head: "Braids & Halo",
@@ -187,19 +192,35 @@ const MyCollection = () => {
       bottom: "Black",
       develope: true,
       type: "Energy",
+      star: "./images/stars/energy.svg",
+    },
+    {
+      img: "./images/develope/1.png",
+      level: "Level 1: Survivor",
+      number: "5,376",
+      head: "Braids & Halo",
+      eyes: "Cautious",
+      mouth: "Moustache",
+      hand: "Phone",
+      top: "Lion",
+      bottom: "Black",
+      develope: true,
+      type: "Energy",
+      star: "./images/stars/energy.svg",
     },
   ];
   return (
     <Wrapper>
-      <Col sm={11} lg={11} xl={10} className="mx-auto">
+      <Menubar />
+      <Col sm={11} lg={11} xl={10} className="mx-auto py-5 mt-5">
         <h2 className="title">My Collection</h2>
         <div className="d-flex justify-content-end align-items-center mx-3 ">
           <SwitchButton />
         </div>
         {showingType ? (
-          <ListCollection data={collectionArray} />
+          <ListCollection data={collectionArray} setFirstNft={setFirstNft} />
         ) : (
-          <GridCollection data={collectionArray} />
+          <GridCollection data={collectionArray} setFirstNft={setFirstNft} />
         )}
       </Col>
     </Wrapper>

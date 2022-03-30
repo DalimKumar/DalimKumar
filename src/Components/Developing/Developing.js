@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { Row, Col } from "react-bootstrap";
 import Typed from "typed.js";
 import styled from "styled-components";
 import smokemachine from "@bijection/smoke";
+import Menubar from "../Menubar/Menubar";
 
 const Wrapper = styled.div`
+  padding-top: 80px;
   animation: show 200ms ease-in-out;
   transition: 100ms ease-in-out;
   @keyframes show {
@@ -86,7 +87,7 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     text-align: center;
-    background: linear-gradient(97.03deg, #00fff1 -27.9%, #ff06c8 132.99%);
+    background: linear-gradient(97.03deg, #00fff1 0%, #ff06c8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -111,6 +112,7 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 767px) {
     .developing {
       font-size: 55px;
+      text-shadow: none;
     }
     .spinner {
       width: 45px;
@@ -189,6 +191,7 @@ const Developing = ({
   }, []);
   return (
     <Wrapper>
+      <Menubar />
       <canvas id="canvas"></canvas>
       <div className="main">
         <img src="./images/bloodlineDekstop.svg" alt="#" className="image" />

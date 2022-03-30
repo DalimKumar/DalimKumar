@@ -1,22 +1,28 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Menubar from "../Menubar/Menubar";
 const Wrapper = styled.div`
-  min-width: 100%;
-  min-height: 100vh;
-  display: block;
   background-image: url(./images/afterMintingBackground.png);
+  display: block;
+
   background-size: cover;
   background-position: center center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
   align-items: center;
   box-sizing: border-box;
   position: relative;
   z-index: 1;
   box-sizing: border-box;
+  .main-wrapper {
+    min-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .main {
     width: 800px;
   }
@@ -26,8 +32,8 @@ const Wrapper = styled.div`
     left: 52%;
     transform: translate(-50%, -50%);
   }
-  .image{
-      margin-bottom:100px;
+  .image {
+    margin-bottom: 100px;
   }
   .title {
     ont-family: "Inter";
@@ -35,7 +41,6 @@ const Wrapper = styled.div`
     font-weight: 900;
     font-size: 90px;
     line-height: 100%;
-    /
 
     text-align: center;
     letter-spacing: 0.065em;
@@ -47,8 +52,8 @@ const Wrapper = styled.div`
     text-fill-color: transparent;
 
     text-shadow: -10px -10px 5.5849px rgba(0, 255, 241, 0.15);
-    padding-top: 10px;
-    padding-right: 20px;
+    padding-top: 60px;
+    padding-right: 35px;
   }
   .box {
     width: 77%;
@@ -94,147 +99,150 @@ const Wrapper = styled.div`
 
     color: #ffffff;
   }
-  .buttonContainer{
-      position:absolute;
-      top:67%;
-      left:50%;
-      transform:translateX(-50%)
+  .buttonContainer {
+    position: absolute;
+    top: 67%;
+    left: 50%;
+    transform: translateX(-50%);
   }
   .mintButton {
-    display:block;
+    display: block;
     border-radius: 15px;
     border: none;
     outline: none;
-    background:#000;
+    background: #000;
     position: relative;
     border-radius: 10px;
     margin: 0 10px;
     cursor: pointer;
-    color: #fff; 
-    
+    color: #fff;
   }
   .mintButton:after {
-    filter: drop-shadow(0px 0px 16px rgba(127, 17, 224, .8)
-);
+    filter: drop-shadow(0px 0px 16px rgba(127, 17, 224, 0.8));
     content: "";
     position: absolute;
     top: calc(-1 * 3px);
     left: calc(-1 * 3px);
     height: calc(100% + 2px * 3);
     width: calc(100% + 2px * 3);
-    background: linear-gradient(-85deg, #5DDEFF 70% ,#FF06C8 100%);
+    background: linear-gradient(-85deg, #5ddeff 70%, #ff06c8 100%);
     border-radius: calc(2 * 5px);
     z-index: -5;
     background-size: 300% 300%;
-  
   }
-  .buttonTitle{
-    font-family: 'Inter';
+  .buttonTitle {
+    font-family: "Inter";
     font-style: normal;
     font-weight: 600;
     font-size: 20.7201px;
     line-height: 100%;
     display: flex;
     align-items: center;
-    background: linear-gradient(97.03deg, #00FFF1 -27.9%, #FF06C8 132.99%);
+    background: linear-gradient(97.03deg, #00fff1 0%, #ff06c8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
     text-shadow: 0px 0px 10px rgba(0, 255, 241, 0.26);
   }
-  .buttonText{
-    font-family: 'Inter';
+  .buttonText {
+    font-family: "Inter";
     font-style: normal;
     font-weight: 100;
     font-size: 16px;
     line-height: 120%;
     text-align: center;
-    background: linear-gradient(97.03deg, #00FFF1 -27.9%, #FF06C8 132.99%);
+    background: linear-gradient(97.03deg, #00fff1 -27.9%, #ff06c8 132.99%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
   }
   @media only screen and (max-width: 991px) {
-    .buttonContainer{
-      position:static;
-      width:100%;
-    
-      transform:translateX(0%)
-  }
+    .buttonContainer {
+      position: static;
+      width: 100%;
+
+      transform: translateX(0%);
+    }
     .wrapper {
       left: 55%;
     }
     .main {
       width: 90%;
-      display:flex;
-      justify-content:center;
+      display: flex;
+      justify-content: center;
     }
   }
   @media only screen and (max-width: 767px) {
-   .buttonTitle{
-       font-size:16px;
-   }
-   .buttonText{
-       font-size:13px;
-   }
+    .buttonTitle {
+      font-size: 16px;
+    }
+    .buttonText {
+      font-size: 13px;
+    }
+    .buttonTitle {
+      text-shadow: none;
+    }
   }
   @media only screen and (max-width: 520px) {
     .main {
       width: 110%;
     }
+    .buttonContainer {
+      padding-bottom: 150px;
+    }
     .mintButton:after {
-   
-    top: calc(-1 * 2px);
-    left: calc(-1 * 2px);
-    height: calc(100% + 2px * 2);
-    width: calc(100% + 2px * 2);
-   
-  
-  }
+      top: calc(-1 * 2px);
+      left: calc(-1 * 2px);
+      height: calc(100% + 2px * 2);
+      width: calc(100% + 2px * 2);
+    }
   }
 `;
 const MintSucessFull = () => {
   return (
     <Wrapper>
-      <div className="main">
-        {" "}
-        <img
-          src="./images/mintSuccesFull.svg"
-          alt="#"
-          className="w-100 d-lg-none"
-        />
-        <img
-          src="./images/Union.svg"
-          alt="#"
-          className="w-100 d-none d-lg-block image"
-        />
-        <div className="wrapper d-none d-lg-block">
-          <h2 className="title">CONFIRMED</h2>
-          <div className="box">
-            {" "}
-            <div className="box1">
-              <p className="text">MINT SUCCESSFUL</p>
+      <Menubar />
+
+      <div className="main-wrapper">
+        <div className="main">
+          <img
+            src="./images/mintSuccesFull.svg"
+            alt="#"
+            className="w-100 d-lg-none "
+          />
+          <img
+            src="./images/Union.svg"
+            alt="#"
+            className="w-100 d-none d-lg-block image"
+          />
+          <div className="wrapper d-none d-lg-block">
+            <h2 className="title">CONFIRMED</h2>
+            <div className="box">
+              {" "}
+              <div className="box1">
+                <p className="text">MINT SUCCESSFUL</p>
+              </div>
+              <div className="box3"></div>
             </div>
-            <div className="box3"></div>
           </div>
         </div>
-      </div>
-      <div className="d-flex justify-content-center buttonContainer ">
-        <Link
-          to={"/"}
-          className={`mintButton d-flex flex-column justify-content-center aling-items-center px-2 py-2 px-lg-3 py-lg-2 `}
-        >
-          <span className="buttonTitle">View on Etherscan</span>
-          <span className="buttonText">0x06a8...c34F</span>
-        </Link>
-        <Link
-          to={"/"}
-          className={`mintButton d-flex flex-column justify-content-center aling-items-center px-2 py-2 px-lg-3 py-lg-1 `}
-        >
-          <span className="buttonTitle">Mint Again</span>
-        </Link>
+        <div className="d-flex justify-content-center buttonContainer ">
+          <Link
+            to={"/"}
+            className={`mintButton d-flex flex-column justify-content-center aling-items-center px-2 py-2 px-lg-3 py-lg-2 `}
+          >
+            <span className="buttonTitle">View on Etherscan</span>
+            <span className="buttonText">0x06a8...c34F</span>
+          </Link>
+          <Link
+            to="/mint"
+            className={`mintButton d-flex flex-column justify-content-center aling-items-center px-2 py-2 px-lg-3 py-lg-1 `}
+          >
+            <span className="buttonTitle">Mint Again</span>
+          </Link>
+        </div>
       </div>
     </Wrapper>
   );

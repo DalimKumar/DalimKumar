@@ -23,6 +23,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Connect />}></Route>
             <Route path="/mint" element={<Mint />}></Route>
+            <Route path="/collection" element={<MyCollection />}></Route>
+            <Route path="/home" element={<Dashboard />}></Route>
+            <Route path="/devolve" element={<Develope />}></Route>
             {/* <Route path="/wrongwallet" element={<WrongWallet />}></Route>
            
             <Route path="/minting" element={<Minting />}></Route> */}

@@ -25,7 +25,14 @@ const Wrapper = styled.div`
   }
 `;
 
-const MyRange = ({ value, setValue }) => {
+const MyRange = ({
+  value,
+  setValue,
+  setMintText,
+  price,
+  buttonText,
+  selected,
+}) => {
   return (
     <Wrapper className="myRange pt-4 ">
       <Range
@@ -33,7 +40,17 @@ const MyRange = ({ value, setValue }) => {
         min={1}
         max={5}
         values={value}
-        onChange={(values) => setValue(values)}
+        onChange={(values) => {
+          setValue(selected ? [...values] : [1]);
+          setMintText(
+            selected
+              ? `Mint ${value[0] + 1} ${buttonText} Survivors <br/> for ${(
+                  (value[0] + 1) *
+                  price
+                ).toFixed(2)}ETH`
+              : `Please select a <br /> Bloodline`
+          );
+        }}
         renderTrack={({ props, children }) => (
           <div
             {...props}

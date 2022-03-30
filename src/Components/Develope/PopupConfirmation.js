@@ -1,19 +1,11 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+
 import styled from "styled-components";
 const Wrapper = styled.div`
   animation: show 200ms ease-in-out;
   transition: 100ms ease-in-out;
+  position: relative;
 
-  .overlays {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    height: 100%;
-    z-index: -1;
-  }
   .pupup-container {
     position: absolute;
     top: 50%;
@@ -75,16 +67,17 @@ const Wrapper = styled.div`
     cursor: pointer;
     color: #fff;
     background: #000;
+    padding: 0px;
   }
   .mintButton:before {
     filter: drop-shadow(0px 0px 11.3158px #ff06c8);
 
     content: "";
     position: absolute;
-    top: calc(-1 * 1px);
-    left: calc(-1 * 1px);
-    height: calc(100% + 2px * 1);
-    width: calc(100% + 2px * 1);
+    top: calc(-1 * 2px);
+    left: calc(-1 * 2px);
+    height: calc(100% + 2px * 2);
+    width: calc(100% + 2px * 2);
     background: linear-gradient(-85deg, #5ddeff 70%, #ff06c8 100%);
     border-radius: calc(2 * 5px);
     z-index: -5;
@@ -174,7 +167,9 @@ const PopupConfirmation = ({ setDevolpeModal, setDevolpingModal }) => {
               </div>
             </button>
             <button
-              onClick={() => setDevolpingModal(true)}
+              onClick={() => {
+                setDevolpingModal(true);
+              }}
               className={`mintButton d-flex flex-column justify-content-center aling-items-center `}
             >
               <div className="buttonTextContainer px-2 py-2 px-lg-3 py-lg-2 ">
@@ -184,7 +179,6 @@ const PopupConfirmation = ({ setDevolpeModal, setDevolpingModal }) => {
           </div>
         </div>
       </div>
-      <div className="overlays"></div>
     </Wrapper>
   );
 };

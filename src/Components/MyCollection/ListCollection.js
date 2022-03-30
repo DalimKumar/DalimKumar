@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+
 const Wrapper = styled.div`
   .list-container {
     background: rgba(0, 0, 0, 0.5);
@@ -85,34 +86,45 @@ const Wrapper = styled.div`
     }
   }
 `;
-const ListCollection = ({ data }) => {
+const ListCollection = ({ data, firstNft, setFirstNft }) => {
   const [selected, setSelected] = useState(0);
+
   return (
     <Wrapper>
       {data.map((el, i) => (
         <div
+          key={i}
           className="list-container px-3 px-sm-4 py-3 my-4 "
           style={{ background: selected === i && "rgba(0, 0, 0, 0.8)" }}
         >
           <div
             key={i}
             className=" first-level d-flex justify-content-between  align-items-center"
-            onClick={() => setSelected(i)}
           >
-            <div className="d-flex align-items-center ">
+            <div
+              className="d-flex align-items-center "
+              onClick={() => setSelected(i)}
+            >
               <img src={el.img} alt="" className="profile" />
               <p className="level px-2 px-sm-4">
                 {el.level} <span className="line">|</span> #{el.number}
               </p>
             </div>
             <div className="d-flex align-items-center">
-              <div className="mx-2 mx-sm-3 d-flex align-items-center">
+              <div
+                className="mx-2 mx-sm-3 d-flex align-items-center"
+                onClick={() => setSelected(i)}
+              >
                 <p className="type">{el.type}</p>
                 {el.star && <img src={el.star} className="star" alt="" />}
               </div>
-              <a href="/#" className="myButton ">
-                <span className="buttonText">Devolve</span>
-              </a>
+              <Link
+                to="/devolve"
+                className="myButton"
+                onClick={() => setFirstNft(data[i])}
+              >
+                <span className="buttonText">Develope</span>
+              </Link>
             </div>
           </div>
           <div
